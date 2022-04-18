@@ -11,7 +11,7 @@ function App() {
 
   function addItem() {
     setItems((prevItems) => {
-      return [...prevItems, newInput];
+      return [...prevItems, newItem];
     });
     setNewItem("");
   }
