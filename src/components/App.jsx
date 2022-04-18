@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import ListItem from "./ListItem";
-
-const itemList = [];
 
 function App() {
   const [newItem, setNewItem] = useState("");
+  const [items, setItems] = useState([]);
 
   function handleChange(event) {
     const newInput = event.target.value;
@@ -12,7 +10,9 @@ function App() {
   }
 
   function addItem() {
-    itemList.push(newItem);
+    setItems((prevItems) => {
+      return [...prevItems, newInput];
+    });
     setNewItem("");
   }
 
@@ -29,8 +29,8 @@ function App() {
       </div>
       <div>
         <ul>
-          {itemList.map((entry) => (
-            <ListItem key={entry} item={entry} />
+          {items.map((entry) => (
+            <li>{entry}</li>
           ))}
         </ul>
       </div>
